@@ -14,7 +14,7 @@ function LunchCheckController($scope) {
 		if (menuArray.length == 0) {
 			$scope.color = 'red';			
 			$scope.msg = 'Please Enter data!';
-		} else if (arr.length>3) {
+		} else if (menuArray.length>3) {
 			$scope.color = 'green';			
 			$scope.msg = 'Too Much!';
 		} else {
