@@ -12,7 +12,6 @@ function ToBuyController(ShoppingListService) {
 	vm.itemsToBuy = ShoppingListService.getToBuy();
 	vm.buy = function(index) {
 		ShoppingListService.buyItem(index);
-		vm.itemsToBuy = ShoppingListService.getToBuy();
 	}
 }
 
@@ -25,9 +24,9 @@ function AlreadyBoughtController(ShoppingListService) {
 function ShoppingListService() {
   var service = this;
 
-  service.bought = [];
+  let bought = [];
   // List of shopping items
-  service.itemsToBuy = [
+  let itemsToBuy = [
   {
   	name:'cookie',
   	quantity:'10'
@@ -47,27 +46,21 @@ function ShoppingListService() {
   ];
 
   service.buyItem = function (itemIndex) {
-    let item = service.itemsToBuy[itemIndex];
+    let item = itemsToBuy[itemIndex];
     let exist = false;
 
-	service.bought.push(item);
-	service.itemsToBuy.splice(itemIndex, 1);
+	bought.push(item);
+	itemsToBuy.splice(itemIndex, 1);
 	return ;
   };
 
   service.getBought = function () {
-  	if (service.bought.length > 0) {
-	    return service.bought;	
-  	} else {
-  		return false;
-  	}
+    return bought;	
+
   };
 
   service.getToBuy = function () {
-  	if (service.itemsToBuy.length==0) {
-  		return false;
-  	}
-    return service.itemsToBuy;
+    return itemsToBuy;
   };
 }
 
