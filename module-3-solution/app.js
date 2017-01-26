@@ -47,7 +47,7 @@
             }).then(function(response) {
                 let foundItems = [];
                 angular.forEach(response.data.menu_items, function(item) {
-                    if (item.description.indexOf(searchItem) === 0) {
+                    if (item.description.indexOf(searchItem) >= 0) {
                         foundItems.push(item);
                     }
                 });
@@ -58,7 +58,7 @@
 
     function FoundItems() {
         var ddo = {
-            // template: [
+            template: [
             // '<div>',
             // '<ul>',
             // '  <li ng-repeat="item in items">',
