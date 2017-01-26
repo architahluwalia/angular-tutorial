@@ -15,6 +15,10 @@
         menu.found = [];
         menu.showNone = false;
         menu.searchForItem = function() {
+            if (menu.searchItem == '') {
+                menu.showNone = true;
+                return ;
+            }
             var promise = MenuSearchService.getMatchedMenuItems(menu.searchItem);
             promise.then(function(response) {
                     menu.found = response;
