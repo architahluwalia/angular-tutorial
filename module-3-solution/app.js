@@ -58,16 +58,17 @@
 
     function FoundItems() {
         var ddo = {
-            template: [
-            '<div>',
-            '<ul>',
-            '  <li ng-repeat="item in items">',
-            '    Name: {{ item.name }}, Short Name: {{item.short_name}}, description: {{ item.description }}',
-            '    <button ng-click="onRemove({\'index\':$index})">Don\'t want this one!</button>',
-            '  </li>',
-            '</ul>',
-            '</div>'
-            ].join(' '),
+            // template: [
+            // '<div>',
+            // '<ul>',
+            // '  <li ng-repeat="item in items">',
+            // '    Name: {{ item.name }}, Short Name: {{item.short_name}}, description: {{ item.description }}',
+            // '    <button ng-click="onRemove({\'index\':$index})">Don\'t want this one!</button>',
+            // '  </li>',
+            // '</ul>',
+            // '</div>'
+            // ].join(' '),
+            templateUrl: 'list.html',
             scope: {
               items: '<',
               onRemove: '&'
