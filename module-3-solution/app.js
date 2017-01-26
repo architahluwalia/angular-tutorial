@@ -12,11 +12,17 @@
 
     function NarrowItDownController(MenuSearchService) {
         var menu = this;
-
+        menu.found = [];
+        menu.showNone = false;
         menu.searchForItem = function() {
             var promise = MenuSearchService.getMatchedMenuItems(menu.searchItem);
             promise.then(function(response) {
-                    menu.found = response.data;
+                    menu.found = response;
+                    if (menu.found.length === 0) {
+                        menu.showNone = true;
+                    } else {
+                        menu.showNone = false;
+                    }
                 })
                 .catch(function(error) {
                     console.log("Something went terribly wrong.");
@@ -39,7 +45,6 @@
                 method: "GET",
                 url: (ApiBasePath + "/menu_items.json")
             }).then(function(response) {
-                console.log(response);
                 let foundItems = [];
                 angular.forEach(response.data.menu_items, function(item) {
                     if (item.description.indexOf(searchItem) === 0) {
@@ -52,6 +57,22 @@
     }
 
     function FoundItems() {
-
+        var ddo = {
+            template: [
+            '<div>',
+            '<ul>',
+            '  <li ng-repeat="item in items">',
+            '    Name: {{ item.name }}, Short Name: {{item.short_name}}, description: {{ item.description }}',
+            '    <button ng-click="onRemove({\'index\':$index})">Don\'t want this one!</button>',
+            '  </li>',
+            '</ul>',
+            '</div>'
+            ].join(' '),
+            scope: {
+              items: '<',
+              onRemove: '&'
+            }
+        };
+        return ddo;
     }
 })();
