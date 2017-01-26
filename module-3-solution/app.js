@@ -58,7 +58,7 @@
 
     function FoundItems() {
         var ddo = {
-            template: [
+            // template: [
             // '<div>',
             // '<ul>',
             // '  <li ng-repeat="item in items">',
