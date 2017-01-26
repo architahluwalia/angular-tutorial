@@ -17,6 +17,7 @@
         menu.searchForItem = function() {
             if (menu.searchItem == '') {
                 menu.showNone = true;
+                menu.found = [];
                 return ;
             }
             var promise = MenuSearchService.getMatchedMenuItems(menu.searchItem);
