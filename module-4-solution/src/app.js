@@ -1,6 +1,6 @@
 (function () {
 
-angular.module('MenuApp',['ui.router']);
+angular.module('MenuApp',['data']);
 
 angular.module('MenuApp')
 .config(RoutesConfig);
